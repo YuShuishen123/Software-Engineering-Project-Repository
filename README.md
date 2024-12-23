@@ -4,8 +4,8 @@
 
 # 🍽️ Food Share Platform
 
-[![Vue](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js)](https://vuejs.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-6DB33F?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
+[![Vue](https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=flat-square&logo=vue.js)](https://vuejs.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.2-6DB33F?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
 [![Element UI](https://img.shields.io/badge/Element-UI-409EFF?style=flat-square&logo=element)](https://element.eleme.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -27,7 +27,7 @@ Food Share Platform是一个现代化的美食分享平台，致力于为美食�
 
 ### 前端技术
 
-- ⚡️ Vue.js 2.x
+- ⚡️ Vue.js 3.0
 - 🎨 Element UI
 - 📦 Vuex 状态管理
 - 🚦 Vue Router 路由管理
@@ -40,18 +40,16 @@ Food Share Platform是一个现代化的美食分享平台，致力于为美食�
 - 🏰 Spring Security 安全框架
 - 📚 MyBatis Plus ORM框架
 - 🗃️ MySQL 数据库
-- 🔑 Redis 缓存
 - 📝 Swagger API文档
 
 ## 🚀 快速开始
 
 ### 环境要求
 
-- Node.js 12+
-- JDK 1.8+
+- Node.js 14+
+- JDK 17+
 - Maven 3.6+
-- MySQL 5.7+
-- Redis 6.0+
+- MySQL 8.0+
 
 ### 前端部署
 
@@ -155,30 +153,6 @@ food-share-api/
 - 🔒 安全性保障
 - 🚀 性能优化
 - 📖 详细文档
-
-## 🤝 贡献指南
-
-1. Fork 本仓库
-2. 创建新的分支 `git checkout -b feature/your-feature`
-3. 提交更改 `git commit -am 'Add new feature'`
-4. 推送到分支 `git push origin feature/your-feature`
-5. 提交 Pull Request
-
-## 📄 开源协议
-
-本项目采用 [MIT](LICENSE) 协议开源。
-
-## 👥 团队成员
-
-- 👨‍💻 开发者A - 前端开发
-- 👩‍💻 开发者B - 后端开发
-- 👨‍🎨 开发者C - UI设计
-
-## 📞 联系我们
-
-- 📧 Email: <your-email@example.com>
-- 💬 微信: your-wechat
-- 🌐 网站: <https://your-website.com>
 
 ## 🙏 致谢
 
