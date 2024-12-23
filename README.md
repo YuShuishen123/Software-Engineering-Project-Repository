@@ -4,7 +4,7 @@
 
 # 🍽️ Food Share Platform
 
-[![Vue](https://img.shields.io/badge/Vue.js-2.x-4FC08D?style=flat-square&logo=vue.js)](https://vuejs.org/)
+[![Vue](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=flat-square&logo=vue.js)](https://vuejs.org/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.x-6DB33F?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
 [![Element UI](https://img.shields.io/badge/Element-UI-409EFF?style=flat-square&logo=element)](https://element.eleme.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
