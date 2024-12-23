@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.CookbookMapper">
+
+    <insert id="save">
+        INSERT INTO cookbook(user_id, cover,title, category_id, content, is_publish, create_time)
+        VALUES (#{userId}, #{cover},#{title}, #{categoryId}, #{content}, #{isPublish}, #{createTime})
+    </insert>
+
+    <update id="update">
+        UPDATE cookbook
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="cover != null and cover != ''">
+                cover = #{cover},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="isPublish != null">
+                is_publish = #{isPublish},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM cookbook WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT c.*,
+        u.user_name,
+        u.user_avatar,
+        ca.name AS category_name
+        FROM cookbook c
+        LEFT JOIN user u ON c.user_id = u.id
+        LEFT JOIN category ca ON c.category_id = ca.id
+        <where>
+            <if test="id != null">
+                AND c.id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                AND c.title LIKE concat('%',#{title},'%')
+            </if>
+            <if test="userId != null">
+                AND c.user_id = #{userId}
+            </if>
+            <if test="categoryId != null">
+                AND c.category_id = #{categoryId}
+            </if>
+            <if test="isPublish != null">
+                AND c.is_publish = #{isPublish}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND c.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY c.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM cookbook c
+        <where>
+            <if test="id != null">
+                AND c.id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                AND c.title LIKE concat('%',#{title},'%')
+            </if>
+            <if test="userId != null">
+                AND c.user_id = #{userId}
+            </if>
+            <if test="categoryId != null">
+                AND c.category_id = #{categoryId}
+            </if>
+            <if test="isPublish != null">
+                AND c.is_publish = #{isPublish}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND c.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.CookbookVO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="user_avatar" property="userAvatar"/>
+        <result column="user_name" property="userName"/>
+        <result column="title" property="title"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="content" property="content"/>
+        <result column="is_publish" property="isPublish"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+
+</mapper>

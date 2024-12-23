@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.GourmetMapper">
+
+    <insert id="save">
+        INSERT INTO gourmet(user_id, category_id, title, content, cover, is_audit, is_publish, create_time)
+        VALUES (#{userId}, #{categoryId}, #{title}, #{content}, #{cover}, #{isAudit}, #{isPublish}, #{createTime})
+    </insert>
+
+    <update id="update">
+        UPDATE gourmet
+        <set>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="cover != null and cover != ''">
+                cover = #{cover},
+            </if>
+            <if test="isAudit != null">
+                is_audit = #{isAudit},
+            </if>
+            <if test="isPublish != null">
+                is_publish = #{isPublish},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM gourmet WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryByView" resultMap="BaseResultMap">
+
+        SELECT g.*,
+        c.name AS category_name,
+        u.user_name,
+        u.user_avatar,
+        (SELECT COUNT(*) FROM interaction i1 WHERE g.id = i1.content_id AND i1.type = 3) AS view_count,
+        (SELECT COUNT(*) FROM interaction i2 WHERE g.id = i2.content_id AND i2.type = 1) AS upvote_count,
+        (SELECT COUNT(*) FROM interaction i3 WHERE g.id = i3.content_id AND i3.type = 2) AS save_count,
+        (SELECT AVG(i4.score) FROM interaction i4 WHERE g.id = i4.content_id AND i4.type = 4) AS rating
+        FROM gourmet g
+        LEFT JOIN category c ON g.category_id = c.id
+        LEFT JOIN user u ON g.user_id = u.id
+        <where>
+            <if test="id != null">
+                AND g.id = #{id}
+            </if>
+            <if test="categoryId != null">
+                AND g.category_id = #{categoryId}
+            </if>
+            <if test="userId != null">
+                AND g.user_id = #{userId}
+            </if>
+            <if test="title != null and title != ''">
+                AND g.title LIKE concat('%',#{title},'%')
+            </if>
+            <if test="isAudit != null">
+                AND g.is_audit = #{isAudit}
+            </if>
+            <if test="isPublish != null">
+                AND g.is_publish = #{isPublish}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND g.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY view_count DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT g.*,
+        c.name AS category_name,
+        u.user_name,
+        u.user_avatar,
+        (SELECT COUNT(*) FROM interaction i1 WHERE g.id = i1.content_id AND i1.type = 3) AS view_count,
+        (SELECT COUNT(*) FROM interaction i2 WHERE g.id = i2.content_id AND i2.type = 1) AS upvote_count,
+        (SELECT COUNT(*) FROM interaction i3 WHERE g.id = i3.content_id AND i3.type = 2) AS save_count,
+        (SELECT AVG(i4.score) FROM interaction i4 WHERE g.id = i4.content_id AND i4.type = 4) AS rating
+        FROM gourmet g
+        LEFT JOIN category c ON g.category_id = c.id
+        LEFT JOIN user u ON g.user_id = u.id
+        <where>
+            <if test="id != null">
+                AND g.id = #{id}
+            </if>
+            <if test="categoryId != null">
+                AND g.category_id = #{categoryId}
+            </if>
+            <if test="userId != null">
+                AND g.user_id = #{userId}
+            </if>
+            <if test="title != null and title != ''">
+                AND g.title LIKE concat('%',#{title},'%')
+            </if>
+            <if test="isAudit != null">
+                AND g.is_audit = #{isAudit}
+            </if>
+            <if test="isPublish != null">
+                AND g.is_publish = #{isPublish}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND g.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY g.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM gourmet g
+        <where>
+            <if test="id != null">
+                AND g.id = #{id}
+            </if>
+            <if test="categoryId != null">
+                AND g.category_id = #{categoryId}
+            </if>
+            <if test="userId != null">
+                AND g.user_id = #{userId}
+            </if>
+            <if test="title != null and title != ''">
+                AND g.title LIKE concat('%',#{title},'%')
+            </if>
+            <if test="isAudit != null">
+                AND g.is_audit = #{isAudit}
+            </if>
+            <if test="isPublish != null">
+                AND g.is_publish = #{isPublish}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND g.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="queryByIds" resultMap="BaseResultMap">
+        SELECT g.*,
+        c.name AS category_name,
+        u.user_name,
+        u.user_avatar,
+        (SELECT COUNT(*) FROM interaction i1 WHERE g.id = i1.content_id AND i1.type = 3) AS view_count,
+        (SELECT COUNT(*) FROM interaction i2 WHERE g.id = i2.content_id AND i2.type = 1) AS upvote_count,
+        (SELECT COUNT(*) FROM interaction i3 WHERE g.id = i3.content_id AND i3.type = 2) AS save_count,
+        (SELECT AVG(i4.score) FROM interaction i4 WHERE g.id = i4.content_id AND i4.type = 4) AS rating
+        FROM gourmet g
+        LEFT JOIN category c ON g.category_id = c.id
+        LEFT JOIN user u ON g.user_id = u.id
+        WHERE g.id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <!-- 根据ID查询美食 -->
+    <select id="queryById" resultMap="BaseResultMap">
+        SELECT g.*,
+               c.name AS category_name,
+               u.user_name,
+               u.user_avatar,
+               (SELECT COUNT(*) FROM interaction i1 WHERE g.id = i1.content_id AND i1.type = 3) AS view_count,
+               (SELECT COUNT(*) FROM interaction i2 WHERE g.id = i2.content_id AND i2.type = 1) AS upvote_count,
+               (SELECT COUNT(*) FROM interaction i3 WHERE g.id = i3.content_id AND i3.type = 2) AS save_count,
+               (SELECT AVG(i4.score) FROM interaction i4 WHERE g.id = i4.content_id AND i4.type = 4) AS rating
+        FROM gourmet g
+                 LEFT JOIN category c ON g.category_id = c.id
+                 LEFT JOIN user u ON g.user_id = u.id
+        WHERE g.id = #{id}
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.GourmetVO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="cover" property="cover"/>
+        <result column="is_audit" property="isAudit"/>
+        <result column="is_publish" property="isPublish"/>
+        <result column="create_time" property="createTime"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_avatar" property="userAvatar"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="upvote_count" property="upvoteCount"/>
+        <result column="save_count" property="saveCount"/>
+        <result column="rating" property="rating"/>
+    </resultMap>
+
+    <!-- 获取所有美食ID -->
+    <select id="getAllIds" resultType="integer">
+        SELECT id FROM gourmet
+        WHERE is_audit = 1 AND is_publish = 1
+    </select>
+
+    <!-- 获取除指定ID外的所有美食ID -->
+    <select id="getAllIdsExcept" resultType="integer">
+        SELECT id FROM gourmet
+        WHERE id != #{id} AND is_audit = 1 AND is_publish = 1
+    </select>
+
+
+</mapper>

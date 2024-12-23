@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.CookbookNutrimentMapper">
+
+    <insert id="save">
+        INSERT INTO cookbook_nutriment(cookbook_id, nutriment_id, 100g_value)
+        VALUES (#{cookbookId}, #{nutrimentId}, #{g100Value})
+    </insert>
+
+    <update id="update">
+        UPDATE cookbook_nutriment
+        <set>
+            <if test="g100Value != null and g100Value != ''">
+                100g_value = #{g100Value},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM cookbook_nutriment WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT cn.*,
+        c.title AS cookbook_name,
+        n.name AS nutriment_name,
+        n.unit AS nutriment_unit
+        FROM cookbook_nutriment cn
+        LEFT JOIN cookbook c ON cn.cookbook_id = c.id
+        LEFT JOIN nutriment n ON cn.nutriment_id = n.id
+        <where>
+            <if test="id != null">
+                AND cn.id = #{id}
+            </if>
+            <if test="cookbookId != null">
+                AND cn.cookbook_id = #{cookbookId}
+            </if>
+            <if test="nutrimentId != null">
+                AND cn.nutriment_id = #{nutrimentId}
+            </if>
+        </where>
+        ORDER BY cn.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM cookbook_nutriment cn
+        LEFT JOIN nutriment n ON cn.nutriment_id = n.id
+        <where>
+            <if test="id != null">
+                AND cn.id = #{id}
+            </if>
+            <if test="cookbookId != null">
+                AND cn.cookbook_id = #{cookbookId}
+            </if>
+            <if test="nutrimentId != null">
+                AND cn.nutriment_id = #{nutrimentId}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByCookbookIds" resultMap="BaseResultMap">
+
+        SELECT cn.*,
+               c.title AS cookbook_name,
+               n.name AS nutriment_name,
+               n.unit AS nutriment_unit
+        FROM cookbook_nutriment cn
+                 LEFT JOIN cookbook c ON cn.cookbook_id = c.id
+                 LEFT JOIN nutriment n ON cn.nutriment_id = n.id
+        WHERE cookbook_id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.CookbookNutrimentVO">
+        <id column="id" property="id"/>
+        <result column="cookbook_id" property="cookbookId"/>
+        <result column="nutriment_id" property="nutrimentId"/>
+        <result column="100g_value" property="g100Value"/>
+        <result column="cookbook_name" property="cookbookName"/>
+        <result column="nutriment_unit" property="nutrimentUnit"/>
+        <result column="nutriment_name" property="nutrimentName"/>
+        <result column="nutriment_unit" property="nutrimentUnit"/>
+    </resultMap>
+
+
+</mapper>

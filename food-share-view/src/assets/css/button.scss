@@ -1,0 +1,43 @@
+// 编辑按钮
+.edit-button {
+    background-color: rgb(128, 158, 77);
+    font-size: 12px;
+    padding: 3px 15px;
+    border-radius: 5px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+.edit-button:hover{
+    background-color: rgb(119, 147, 71);
+}
+
+.channel-button:hover{
+    background-color: rgb(90, 96, 102);
+}
+
+// 取消按钮
+.channel-button {
+    background-color: rgb(110, 120, 129);
+    font-size: 12px;
+    padding: 2px 15px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 3px;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    color: rgb(246, 246, 247);
+    margin: 0 10px;
+}
+
+
+// 文字按钮
+.text-button {
+    margin-right: 10px;
+    color: rgb(86, 154, 200);
+    cursor: pointer;
+}

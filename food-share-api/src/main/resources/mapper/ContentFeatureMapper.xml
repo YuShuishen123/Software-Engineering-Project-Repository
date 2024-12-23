@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.ContentFeatureMapper">
+    
+    <insert id="insert" parameterType="cn.kmbeast.pojo.entity.ContentFeature">
+        INSERT INTO content_feature (
+            gourmet_id,
+            feature_vector,
+            create_time,
+            update_time
+        ) VALUES (
+            #{gourmetId},
+            #{featureVector},
+            #{createTime},
+            #{updateTime}
+        )
+    </insert>
+    
+    <select id="selectByGourmetId" resultType="cn.kmbeast.pojo.entity.ContentFeature">
+        SELECT 
+            id,
+            gourmet_id,
+            feature_vector,
+            create_time,
+            update_time
+        FROM content_feature
+        WHERE gourmet_id = #{gourmetId}
+        ORDER BY create_time DESC
+        LIMIT 1
+    </select>
+    
+    <select id="selectBatch" resultType="cn.kmbeast.pojo.entity.ContentFeature">
+        SELECT DISTINCT ON (gourmet_id)
+            id,
+            gourmet_id,
+            feature_vector,
+            create_time,
+            update_time
+        FROM content_feature
+        WHERE gourmet_id IN
+        <foreach collection="gourmetIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        ORDER BY gourmet_id, create_time DESC
+    </select>
+    
+    <insert id="insertOrUpdate" parameterType="cn.kmbeast.pojo.entity.ContentFeature">
+        INSERT INTO content_feature (
+            gourmet_id,
+            feature_vector,
+            create_time,
+            update_time
+        ) VALUES (
+            #{gourmetId},
+            #{featureVector},
+            #{createTime},
+            #{updateTime}
+        ) ON DUPLICATE KEY UPDATE
+            feature_vector = VALUES(feature_vector),
+            update_time = VALUES(update_time)
+    </insert>
+    
+    <delete id="deleteExpiredFeatures">
+        DELETE FROM content_feature
+        WHERE update_time &lt; #{expiryTime}
+    </delete>
+</mapper>

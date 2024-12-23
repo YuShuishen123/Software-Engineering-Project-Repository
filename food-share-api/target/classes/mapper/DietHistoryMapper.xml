@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.DietHistoryMapper">
+
+    <insert id="save">
+        INSERT INTO diet_history(user_id, cookbook_id, detail, value, create_time)
+        VALUES
+        <foreach collection="dietHistories" index="index" separator="," item="dietHistory">
+            (
+            #{dietHistory.userId},
+            #{dietHistory.cookbookId},
+            #{dietHistory.detail},
+            #{dietHistory.value},
+            #{dietHistory.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <update id="update">
+        UPDATE diet_history
+        <set>
+            <if test="detail != null and detail != ''">
+                detail = #{detail},
+            </if>
+            <if test="value != null">
+                value = #{value},
+            </if>
+            <if test="cookbookId != null">
+                cookbook_id = #{cookbookId},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM diet_history WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT dh.*,
+        u.user_name,
+        c.title AS cookbook_title,
+        c.cover AS cookbook_cover,
+        n.id AS nutriment_id,
+        n.name AS nutriment_name,
+        cn.100g_value AS g100_value
+        FROM diet_history dh
+        LEFT JOIN user u ON dh.user_id = u.id
+        LEFT JOIN cookbook c ON dh.cookbook_id = c.id
+        LEFT JOIN cookbook_nutriment cn ON dh.cookbook_id = cn.cookbook_id
+        LEFT JOIN nutriment n ON n.id = cn.nutriment_id
+        <where>
+            <if test="id != null">
+                AND dh.id = #{id}
+            </if>
+            <if test="userId != null">
+                AND dh.user_id = #{userId}
+            </if>
+            <if test="cookbookId != null">
+                AND dh.cookbook_id = #{cookbookId}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND dh.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY dh.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM diet_history dh
+        <where>
+            <if test="id != null">
+                AND dh.id = #{id}
+            </if>
+            <if test="userId != null">
+                AND dh.user_id = #{userId}
+            </if>
+            <if test="cookbookId != null">
+                AND dh.cookbook_id = #{cookbookId}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND dh.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.DietHistoryVO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="cookbook_id" property="cookbookId"/>
+        <result column="detail" property="detail"/>
+        <result column="value" property="value"/>
+        <result column="create_time" property="createTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="cookbook_cover" property="cookbookCover"/>
+        <result column="cookbook_title" property="cookbookTitle"/>
+        <result column="nutriment_id" property="nutrimentId"/>
+        <result column="nutriment_name" property="nutrimentName"/>
+        <result column="g100_value" property="g100Value"/>
+    </resultMap>
+
+
+</mapper>

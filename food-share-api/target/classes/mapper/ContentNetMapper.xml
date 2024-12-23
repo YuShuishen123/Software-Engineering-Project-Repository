@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.ContentNetMapper">
+
+    <insert id="save">
+        INSERT INTO content_net(user_id, gourmet_id, access_code, valid_day, access_password, password_auth,
+                                create_time)
+        VALUES (#{userId}, #{gourmetId}, #{accessCode}, #{validDay}, #{accessPassword}, #{passwordAuth},
+                #{createTime})
+    </insert>
+
+    <update id="update">
+        UPDATE content_net
+        <set>
+            <if test="accessCode != null and accessCode != ''">
+                access_code = #{accessCode},
+            </if>
+            <if test="validDay != null">
+                valid_day = #{validDay},
+            </if>
+            <if test="accessPassword != null and accessPassword != ''">
+                access_password = #{accessPassword},
+            </if>
+            <if test="passwordAuth != null">
+                password_auth = #{passwordAuth},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM content_net WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT cn.*,
+        g.title AS gourmet_title,
+        u.user_name,
+        u.user_avatar
+        FROM content_net cn
+        LEFT JOIN gourmet g ON cn.gourmet_id = g.id
+        LEFT JOIN user u ON cn.user_id = u.id
+        <where>
+            <if test="id != null">
+                AND cn.id = #{id}
+            </if>
+            <if test="gourmetId != null">
+                AND cn.gourmet_id = #{gourmetId}
+            </if>
+            <if test="userId != null">
+                AND cn.user_id = #{userId}
+            </if>
+            <if test="accessCode != null and accessCode != ''">
+                AND cn.access_code LIKE concat('%',#{accessCode},'%')
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND cn.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY cn.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM content_net cn
+        <where>
+            <if test="id != null">
+                AND cn.id = #{id}
+            </if>
+            <if test="gourmetId != null">
+                AND cn.gourmet_id = #{gourmetId}
+            </if>
+            <if test="userId != null">
+                AND cn.user_id = #{userId}
+            </if>
+            <if test="accessCode != null and accessCode != ''">
+                AND cn.access_code LIKE concat('%',#{accessCode},'%')
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND cn.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.ContentNetVO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="gourmet_id" property="gourmetId"/>
+        <result column="access_code" property="accessCode"/>
+        <result column="valid_day" property="validDay"/>
+        <result column="access_password" property="accessPassword"/>
+        <result column="password_auth" property="passwordAuth"/>
+        <result column="create_time" property="createTime"/>
+        <result column="gourmet_title" property="gourmetTitle"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_avatar" property="userAvatar"/>
+    </resultMap>
+
+
+</mapper>
