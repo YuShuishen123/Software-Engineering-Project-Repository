@@ -51,40 +51,6 @@ Food Share Platform是一个现代化的美食分享平台，致力于为美食�
 - Maven 3.6+
 - MySQL 8.0+
 
-### 前端部署
-
-```bash
-# 克隆项目
-git clone https://github.com/your-username/food-share-view.git
-
-# 进入项目目录
-cd food-share-view
-
-# 安装依赖
-npm install
-
-# 启动开发服务器
-npm run serve
-
-# 构建生产环境
-npm run build
-```
-
-### 后端部署
-
-```bash
-# 克隆后端项目
-git clone https://github.com/your-username/food-share-api.git
-
-# 进入项目目录
-cd food-share-api
-
-# 编译项目
-mvn clean package
-
-# 运行项目
-java -jar target/food-share-api.jar
-```
 
 ## 📚 项目结构
 
@@ -137,7 +103,6 @@ food-share-api/
 
 - 评论系统
 - 点赞功能
-- 用户关注
 
 ### 👨‍💼 管理后台
 
