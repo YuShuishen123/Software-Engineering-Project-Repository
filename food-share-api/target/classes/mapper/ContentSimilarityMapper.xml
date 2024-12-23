@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.ContentSimilarityMapper">
+    
+    <insert id="insert" parameterType="cn.kmbeast.pojo.entity.ContentSimilarity">
+        INSERT INTO content_similarity (
+            source_id,
+            target_id,
+            similarity,
+            create_time
+        ) VALUES (
+            #{sourceId},
+            #{targetId},
+            #{similarity},
+            #{createTime}
+        )
+    </insert>
+    
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO content_similarity (
+            source_id,
+            target_id,
+            similarity,
+            create_time
+        ) VALUES 
+        <foreach collection="similarities" item="item" separator=",">
+            (
+                #{item.sourceId},
+                #{item.targetId},
+                #{item.similarity},
+                #{item.createTime}
+            )
+        </foreach>
+    </insert>
+    
+    <select id="selectBySourceId" resultType="cn.kmbeast.pojo.entity.ContentSimilarity">
+        SELECT 
+            id,
+            source_id,
+            target_id,
+            similarity,
+            create_time
+        FROM content_similarity
+        WHERE source_id = #{sourceId}
+        ORDER BY similarity DESC
+        LIMIT #{limit}
+    </select>
+    
+    <insert id="insertOrUpdate" parameterType="cn.kmbeast.pojo.entity.ContentSimilarity">
+        INSERT INTO content_similarity (
+            source_id,
+            target_id,
+            similarity,
+            create_time
+        ) VALUES (
+            #{sourceId},
+            #{targetId},
+            #{similarity},
+            #{createTime}
+        ) ON DUPLICATE KEY UPDATE
+            similarity = VALUES(similarity),
+            create_time = VALUES(create_time)
+    </insert>
+    
+    <delete id="deleteBySourceId">
+        DELETE FROM content_similarity
+        WHERE source_id = #{sourceId}
+    </delete>
+    
+    <select id="selectBySourceAndTargetId" resultType="cn.kmbeast.pojo.entity.ContentSimilarity">
+        SELECT 
+            id,
+            source_id,
+            target_id,
+            similarity,
+            create_time
+        FROM content_similarity
+        WHERE source_id = #{sourceId} AND target_id = #{targetId}
+        LIMIT 1
+    </select>
+    
+</mapper>

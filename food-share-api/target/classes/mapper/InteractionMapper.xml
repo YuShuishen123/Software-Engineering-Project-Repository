@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.InteractionMapper">
+
+    <insert id="save">
+        INSERT INTO interaction(type, content_type, content_id, user_id, score, create_time)
+        VALUES (#{type}, #{contentType}, #{contentId}, #{userId}, #{score}, #{createTime})
+    </insert>
+
+    <delete id="batchDelete" parameterType="list">
+        DELETE FROM interaction WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <delete id="delByUserInfo">
+        DELETE
+        FROM interaction
+        WHERE type = #{type}
+          AND content_id = #{contentId}
+          AND user_id = #{userId}
+    </delete>
+
+    <!--查询信息-->
+    <select id="query" resultMap="BaseResultMap">
+
+        SELECT i.*,
+        g.title AS content_title,
+        u.user_name,
+        u.user_avatar
+        FROM interaction i
+        LEFT JOIN gourmet g ON i.content_id = g.id
+        LEFT JOIN user u ON i.user_id = u.id
+        <where>
+            <if test="id != null">
+                AND i.id = #{id}
+            </if>
+            <if test="userId != null">
+                AND i.user_id = #{userId}
+            </if>
+            <if test="contentId != null">
+                AND i.content_id = #{contentId}
+            </if>
+            <if test="type != null">
+                AND i.type = #{type}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND i.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+        ORDER BY i.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
+    <!--满足分页条件的数据总项-->
+    <select id="queryCount" resultType="integer">
+
+        SELECT COUNT(*)
+        FROM interaction i
+        <where>
+            <if test="id != null">
+                AND i.id = #{id}
+            </if>
+            <if test="userId != null">
+                AND i.user_id = #{userId}
+            </if>
+            <if test="contentId != null">
+                AND i.content_id = #{contentId}
+            </if>
+            <if test="type != null">
+                AND i.type = #{type}
+            </if>
+            <if test="startTime != null and endTime != null">
+                AND i.create_time BETWEEN #{startTime} AND #{endTime}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="queryDays" resultMap="BaseResultMap">
+        SELECT i.*
+        FROM interaction i WHERE content_id IN
+        <foreach collection="gourmetIds" item="gourmetId" open="(" separator="," close=")">
+            #{gourmetId}
+        </foreach>
+        AND i.type = #{interactionQueryDto.type}
+        AND i.create_time BETWEEN #{interactionQueryDto.startTime} AND #{interactionQueryDto.endTime}
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.kmbeast.pojo.vo.InteractionVO">
+        <id column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="content_id" property="contentId"/>
+        <result column="content_type" property="contentType"/>
+        <result column="user_id" property="userId"/>
+        <result column="score" property="score"/>
+        <result column="create_time" property="createTime"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_avatar" property="userAvatar"/>
+        <result column="content_title" property="contentTitle"/>
+    </resultMap>
+
+
+</mapper>
