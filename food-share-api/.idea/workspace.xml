@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6adcc8cf-9a0b-4afe-a9c6-9defa3dec39b" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\Development Tool\apache-maven-3.9.9" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2bfNS2bBHicwdbX6ZY3CwBVle04" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FoodShareApplication.executor": "Run",
+    "Application.RootUtils.executor": "Run",
+    "Application.Test (1).executor": "Run",
+    "Application.Test.executor": "Run",
+    "Maven.Unknown [clean].executor": "Run",
+    "Maven.Unknown [install].executor": "Run",
+    "Maven.class-net [clean].executor": "Run",
+    "Maven.cloud-note [clean].executor": "Run",
+    "Maven.food-share-api [clean].executor": "Run",
+    "Maven.food-share-api [install].executor": "Run",
+    "Maven.health-api [clean].executor": "Run",
+    "Maven.health-api [install].executor": "Run",
+    "Maven.health-api [org.mybatis.generator:mybatis-generator-maven-plugin:1.3.7:generate].executor": "Run",
+    "Maven.iot-net [clean].executor": "Run",
+    "Maven.iot-net [compile].executor": "Run",
+    "Maven.msdz-api [clean].executor": "Run",
+    "Maven.msdz-api [install].executor": "Run",
+    "Maven.online-travel-api [clean].executor": "Run",
+    "Maven.online-travel-api [install].executor": "Run",
+    "Maven.personal-health-api [clean].executor": "Run",
+    "Maven.seniors-nursing [clean].executor": "Run",
+    "Maven.seniors-nursing [compile].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.ClassNetApplication.executor": "Run",
+    "Spring Boot.ClassroomApplication (1).executor": "Run",
+    "Spring Boot.ClassroomApplication.executor": "Run",
+    "Spring Boot.CloudNoteStarter.executor": "Run",
+    "Spring Boot.FoodShareApplication.executor": "Run",
+    "Spring Boot.HospitalManageStarter.executor": "Run",
+    "Spring Boot.IotStarter.executor": "Run",
+    "Spring Boot.OnlineTravelApplication.executor": "Run",
+    "Spring Boot.PersonalHealthApplication (1).executor": "Run",
+    "Spring Boot.PersonalHealthApplication.executor": "Run",
+    "Spring Boot.SeniorsNursingStarter.executor": "Run",
+    "extract.method.default.visibility": "private",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Desktop/项目实战/美食分享平台/源码/后端/food-share-api/src/main/java/cn/kmbeast/utils",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desktop\项目实战\美食分享平台\源码\后端\food-share-api\src\main\java\cn\kmbeast\utils" />
+      <recent name="D:\Desktop\项目实战\美食分享平台\源码\后端\food-share-api\src\main\resources\mapper" />
+      <recent name="D:\Desktop\项目实战\在线旅游系统\脚手架\后端\online-travel-api\src\main\resources\mapper" />
+      <recent name="D:\Desktop\B站课程\个人健康管理系统\personal-health-api\src\main\resources\mapper" />
+      <recent name="D:\Desktop\B站课程\1.个人健康管理系统\脚手架\personal-health-api\src\main\resources\mapper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Desktop\personal-health\health-api\src\main\resources" />
+      <recent name="D:\Desktop\lesson\2024-lesson-arrange\seniors-nursing-sym\seniors-nursing\src\main\resources\mapper" />
+      <recent name="D:\Desktop\project\cloud_note\cloud-note-server\src\main\resources\mapper" />
+      <recent name="D:\Desktop\project\class-active\class-net\src\main\resources\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.kmbeast.controller" />
+      <recent name="cn.kmbeast.pojo.dto.query.extend" />
+      <recent name="cn.kmbeast.mapper" />
+      <recent name="cn.kmbeast.service.impl" />
+      <recent name="cn.kmbeast.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.FoodShareApplication">
+    <configuration name="FoodShareApplication" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="cn.kmbeast.FoodShareApplication" />
+      <module name="online-travel-api" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FoodShareApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="food-share-api" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.kmbeast.FoodShareApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.kmbeast.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FoodShareApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6adcc8cf-9a0b-4afe-a9c6-9defa3dec39b" name="Default Changelist" comment="" />
+      <created>1706602170479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706602170479</updated>
+      <workItem from="1706602171643" duration="354000" />
+      <workItem from="1706769435705" duration="7000" />
+      <workItem from="1706769513678" duration="4041000" />
+      <workItem from="1707753532486" duration="803000" />
+      <workItem from="1708330128384" duration="5870000" />
+      <workItem from="1708350115446" duration="5618000" />
+      <workItem from="1708584088308" duration="3232000" />
+      <workItem from="1708866733903" duration="3947000" />
+      <workItem from="1709129833510" duration="122000" />
+      <workItem from="1709218025058" duration="36000" />
+      <workItem from="1710856571842" duration="1604000" />
+      <workItem from="1710916834135" duration="15095000" />
+      <workItem from="1710948887933" duration="15000" />
+      <workItem from="1711027227163" duration="7982000" />
+      <workItem from="1711038985766" duration="284000" />
+      <workItem from="1711039416991" duration="23490000" />
+      <workItem from="1712128338242" duration="9207000" />
+      <workItem from="1712764590175" duration="9146000" />
+      <workItem from="1712837847288" duration="17000" />
+      <workItem from="1712838637515" duration="183000" />
+      <workItem from="1712839601705" duration="11000" />
+      <workItem from="1713624271347" duration="19254000" />
+      <workItem from="1713697546322" duration="7121000" />
+      <workItem from="1713833786905" duration="62812000" />
+      <workItem from="1714399487383" duration="9207000" />
+      <workItem from="1714411266655" duration="27000" />
+      <workItem from="1714479797463" duration="1259000" />
+      <workItem from="1714548871660" duration="10827000" />
+      <workItem from="1714565829576" duration="24977000" />
+      <workItem from="1714832961102" duration="14556000" />
+      <workItem from="1715181303836" duration="12000" />
+      <workItem from="1715709241409" duration="653000" />
+      <workItem from="1716991774068" duration="56000" />
+      <workItem from="1716991899232" duration="6014000" />
+      <workItem from="1716999662377" duration="3543000" />
+      <workItem from="1717053588150" duration="518000" />
+      <workItem from="1717054210089" duration="13859000" />
+      <workItem from="1717154090879" duration="22406000" />
+      <workItem from="1717740722904" duration="1749000" />
+      <workItem from="1717831481095" duration="34304000" />
+      <workItem from="1718171048644" duration="10007000" />
+      <workItem from="1718200761492" duration="46133000" />
+      <workItem from="1718697636465" duration="4547000" />
+      <workItem from="1718719476197" duration="137000" />
+      <workItem from="1719236191047" duration="3820000" />
+      <workItem from="1719294499218" duration="5360000" />
+      <workItem from="1719664411650" duration="33000" />
+      <workItem from="1719670670894" duration="9000" />
+      <workItem from="1719671623651" duration="35000" />
+      <workItem from="1719758459613" duration="361000" />
+      <workItem from="1719759999922" duration="1293000" />
+      <workItem from="1719761445902" duration="11000" />
+      <workItem from="1720291857854" duration="7386000" />
+      <workItem from="1720357997710" duration="7135000" />
+      <workItem from="1720413959769" duration="3629000" />
+      <workItem from="1720419151190" duration="619000" />
+      <workItem from="1720422315881" duration="15803000" />
+      <workItem from="1720502669088" duration="8255000" />
+      <workItem from="1720607465933" duration="1429000" />
+      <workItem from="1720609939701" duration="12000" />
+      <workItem from="1720624216878" duration="18485000" />
+      <workItem from="1720845619272" duration="42178000" />
+      <workItem from="1721052184088" duration="1856000" />
+      <workItem from="1721111135959" duration="7577000" />
+      <workItem from="1721132092103" duration="34000" />
+      <workItem from="1723537847760" duration="1298000" />
+      <workItem from="1726741584738" duration="694000" />
+      <workItem from="1726748990768" duration="48000" />
+      <workItem from="1727843500284" duration="3968000" />
+      <workItem from="1728116123114" duration="75000" />
+      <workItem from="1728278476045" duration="1269000" />
+      <workItem from="1728331655689" duration="16000" />
+      <workItem from="1729758876402" duration="7008000" />
+      <workItem from="1729929783600" duration="633000" />
+      <workItem from="1729932271883" duration="3218000" />
+      <workItem from="1730021085590" duration="775000" />
+      <workItem from="1730022411996" duration="10849000" />
+      <workItem from="1730179685235" duration="25455000" />
+      <workItem from="1730522168047" duration="3935000" />
+      <workItem from="1730538772254" duration="4976000" />
+      <workItem from="1730626105420" duration="46000" />
+      <workItem from="1730698937820" duration="730000" />
+      <workItem from="1730895343716" duration="14008000" />
+      <workItem from="1731128247541" duration="18000" />
+      <workItem from="1731160607290" duration="3734000" />
+      <workItem from="1731226754346" duration="987000" />
+      <workItem from="1732428590691" duration="4975000" />
+      <workItem from="1732518731308" duration="81000" />
+      <workItem from="1732520892223" duration="16140000" />
+      <workItem from="1732676878688" duration="16918000" />
+      <workItem from="1732776029353" duration="21060000" />
+      <workItem from="1732875646998" duration="43276000" />
+      <workItem from="1733206600858" duration="5435000" />
+      <workItem from="1733213832918" duration="4986000" />
+      <workItem from="1733231231516" duration="1970000" />
+      <workItem from="1733288986891" duration="11032000" />
+      <workItem from="1734847489931" duration="1515000" />
+      <workItem from="1734849053959" duration="146000" />
+      <workItem from="1734850902102" duration="18612000" />
+      <workItem from="1734874079805" duration="3056000" />
+      <workItem from="1734878135697" duration="5940000" />
+      <workItem from="1734916018641" duration="5351000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
