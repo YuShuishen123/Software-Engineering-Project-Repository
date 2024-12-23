@@ -22,5 +22,4 @@
 1. **克隆仓库**
 
 ```bash
-git clone https://github.com/your-username/food-sharing-platform.git
-cd food-sharing-platform
+git clone https://github.com/YuShuishen123/Software-Engineering-Project-Repository.git
